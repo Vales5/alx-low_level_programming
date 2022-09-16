@@ -9,18 +9,19 @@
 
 int main(void)
 {
-	unsigned int long n = 612852475143, a = (int) sqrt(n);
+	unsigned int a = 2;
+	unsigned long n = 612852475143;
 
-	while (1)
+	while (a != n)
 	{
 		if (n % a == 0)
 		{
-			printf("%lu \n", n / a);
-			break;
+			n = n / a;
+		} else
+		{
+			a++;
 		}
-		a--;
-
 	}
-
+	printf("%lu\n", n);
 	return (0);
 }
