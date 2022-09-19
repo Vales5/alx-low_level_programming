@@ -10,17 +10,22 @@
 
 void rev_string(char *s)
 {
-	int l, i;
-	char ch;
+	int len, i, half;
+	char temp;
 
-	/*find string length without null char*/
-	for (l = 0; s[l] != '\0'; ++l)
+	for (len = 0; s[len] != '\0'; len++)
+		;
 
-		for (i = 0; i < l / 2; ++i)
-		{
-			ch = s[i];
-			s[i] = s[l - 1 - i];
-			s[l - 1 - i] = ch;
-		}
+	i = 0;
+
+	half = len / 2;
+
+	while (half--)
+	{
+		temp = s[len - i - 1];
+		s[len - i - 1] = s[i];
+		s[i] = temp;
+		i++;
+	}
 
 }
