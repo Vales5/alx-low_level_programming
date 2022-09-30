@@ -1,47 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
 
 /**
- * isInteger - checks if s is an integer
- * @s: string to check
+ * isNum - checks if string array is a num
+ * @num: string to check
  * Return: 0 or 1
  */
 
-int isInteger(const char *s)
+int isNum(char num[])
 {
-	int i = 0;
+	int i, l = strlen(num);
 
-	while (s[i] != '\0')
+	for (i = 0; i < l; i++)
 	{
-		if (s[i] < '0' || s[i] > '9')
+		if (!isdigit(num[i]))
 			return (1);
-		i++;
 	}
 	return (0);
 }
 
 /**
- * main - adds positive numbers
- * @argc: int
- * @argv: list
- * Return: 0
+ * main - a program that adds positive numbers
+ * @argc: holds the number of arguments passed
+ * @argv: array pointer that holds the arguments passed
+ * Return: Always 0 (Success)
  */
 
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
-	int sum = 0;
-}
-	while (--argc)
+	int i, sum;
+
+	if (argc == 1)
 	{
-		if (isInteger(argv[argc]))
-		{
-			printf("Error\n");
-			return (1);
-		}
-		sum += atoi(argv[argc]);
+		printf("0\n");
 	}
-
-printf("%i\n", sum);
-
-return (0);
+	else
+	{
+		sum = 0;
+		for (i = 1; i < argc; i++)
+		{
+			if (isNum(argv[i]) == 0)
+			{
+				sum += atoi(argv[i]);
+			}
+			else
+			{
+				printf("Error\n");
+				return (1);
+			}
+		}
+		printf("%d\n", sum);
+	}
+	return (0);
 }
